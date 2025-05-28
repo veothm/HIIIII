@@ -23,15 +23,72 @@
       img {
         width: 50%;
       }
+      .row {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .column {
+        float: left;
+        width: 16.6%;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      .cursor {
+        cursor: pointer;
+      }
+      .demo {
+        opacity: 0.6;
+      }
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
+      button {
+        width: 1in;
+        height: 0.5;
+        border-radius: 2%;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: lightblue;
+      }
     </style>
     <script>
       /*
-      https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_283593491.jpg
-      https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_375337852.jpg
-      https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_204901477.jpg
-      https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_362847104.jpg
-      https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_194642540.jpg
-    */
+        https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_283593491.jpg
+        https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_375337852.jpg
+        https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_204901477.jpg
+        https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_362847104.jpg
+        https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_194642540.jpg
+      */
+      var slideIndex = 1;
+      showSlide(slideIndex);
+      function plusSlides(n) {
+        showSlide((slideIndex += n));
+      }
+      function currentSlide(n) {
+        showSlide((slideIndex = n));
+      }
+      function showSlides(n) {
+        let i;
+        let slide = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) slideIndex = slides.length;
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
     </script>
     <h1>Dev Tours & Travels Solutions</h1>
     <h2>about us</h2>
@@ -77,6 +134,59 @@
           <img
             src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_287051999.jpg"
             class="s"
+          />
+        </div>
+        <a onclick="plusSlides(-1)">< Previous </a>
+        <a onclick="plusSlides(1)"> next></a>
+        <p id="caption"></p>
+      </div>
+      <div class="row">
+        <div class="column">
+          <img
+            src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_283593491.jpg"
+            style="height: 128px; width: 256px"
+            class="demo cursor"
+            onclick="currentSlide(1)"
+          />
+        </div>
+        <div class="column">
+          <img
+            src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_375337852.jpg"
+            style="height: 128px; width: 256px"
+            class="demo cursor"
+            onclick="currentSlide(2)"
+          />
+        </div>
+        <div class="column">
+          <img
+            src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_204901477.jpg"
+            style="height: 128px; width: 256px"
+            class="demo cursor"
+            onclick="currentSlide(3)"
+          />
+        </div>
+        <div class="column">
+          <img
+            src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_362847104.jpg"
+            style="height: 128px; width: 256px"
+            class="demo cursor"
+            onclick="currentSlide(4)"
+          />
+        </div>
+        <div class="column">
+          <img
+            src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_194642540.jpg"
+            style="height: 128px; width: 256px"
+            class="demo cursor"
+            onclick="currentSlide(5)"
+          />
+        </div>
+        <div class="column">
+          <img
+            src="https://s3.india.com/travel/wp-content/uploads/2016/06/shutterstock_287051999.jpg"
+            style="height: 128px; width: 256px"
+            class="demo cursor"
+            onclick="currentSlide(6)"
           />
         </div>
       </div>
